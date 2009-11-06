@@ -1,9 +1,9 @@
-import java.net.Socket;
-import java.util.List;
-
 /**
  * $Id$
  */
+
+import java.net.Socket;
+import java.util.List;
 
 /**
  * @author dan.arnold
