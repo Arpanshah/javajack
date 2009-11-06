@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * $Id$
  */
@@ -7,5 +9,7 @@
  *
  */
 public class Dealer {
-
+	public Dealer( List<PlayerInterface> players, int seed ) {
+		
+	}
 }
