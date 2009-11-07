@@ -62,7 +62,7 @@ public class ClientProxy implements ServerModelListenerInterface {
 	 */
 	public void setGames(Integer[] gameIds) {
 		String sendString = "setGames";
-		if(gameIds.length == 0) {
+		if(gameIds.length != 0) {
 			for(int i = 0; i < gameIds.length; i++) {
 				sendString += " " + gameIds[i];
 			}
@@ -126,12 +126,15 @@ public class ClientProxy implements ServerModelListenerInterface {
 	}
 	
 	public void start() {
-		new Reader().start();
+		Reader r = new Reader();
+		r.start();
 	}
 	
-	private class Reader extends Thread {
+	class Reader extends Thread {
 		public void run() {
+			System.out.println("listening");
 			try {
+				System.out.println("listening2");
 				while(true) {
 					String [] tokens = in.readLine().split(" ");
 					String command = tokens[0];
@@ -152,7 +155,9 @@ public class ClientProxy implements ServerModelListenerInterface {
 						listener.setCell(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), tokens[3]);
 					}
 				}
-			} catch (Exception e) {}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
