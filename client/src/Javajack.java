@@ -48,10 +48,9 @@ public class Javajack {
 		
 	}
 
-	public Javajack( Dealer d ) {
+	public Javajack( Referee referee ) {
 		// Creates Deck from seed
-		// Gives Deck to Dealer
-		// Creates Dealer( 
+		// Gives Deck to Referee
 	}
 
 }
