@@ -80,6 +80,7 @@ public class ServerModel {
 	 * @param gameId
 	 */
 	public void joinGame(int gameId) {
+		// check if you can join the game, else i call a different function letting you know that you cna't join
 		Game gameToJoin = (Game)games.get(gameId);
 		modelListener.setGameSeed(gameToJoin.getSeed());
 		modelListener.setLastCardIndex(gameToJoin.getLastCardIndex());
