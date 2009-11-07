@@ -40,13 +40,11 @@ public class GameBrowser {
 		gui = new GameBrowserGUI( this );
 		proxy.setListener( new ServerModelListenerInterface() {
 
-			@Override
 			public void setCell(String value) {
 				// TODO Auto-generated method stub
 				
 			}
 
-			@Override
 			public void setGameSeed(int seed) {
 				GameBrowser.this.gameSeed = seed;
 				if ( readyToJoinGame() ) {
@@ -54,7 +52,6 @@ public class GameBrowser {
 				}
 			}
 
-			@Override
 			public void setLastCardIndex(int index) {
 				GameBrowser.this.lastCardIndex = index;
 				if ( readyToJoinGame() ) {
@@ -63,7 +60,6 @@ public class GameBrowser {
 				
 			}
 
-			@Override
 			public void setPlayers(List<Integer> playerIds) {
 				GameBrowser.this.playerIds = playerIds;
 				if ( readyToJoinGame() ) {
@@ -71,12 +67,10 @@ public class GameBrowser {
 				}
 			}
 
-			@Override
 			public void setGames(Integer[] gameIds) {
 				gui.populateList( gameIds );
 			}
 
-			@Override
 			public void setPlayerId(int playerId) {
 				GameBrowser.this.playerId = playerId;
 				if ( readyToJoinGame() ) {
@@ -84,7 +78,6 @@ public class GameBrowser {
 				}
 			}
 
-			@Override
 			public void setGameId(int gameId) {
 				// TODO Auto-generated method stub
 				
