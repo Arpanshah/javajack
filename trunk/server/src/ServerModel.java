@@ -1,23 +1,27 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * $Id$
  */
 
 /**
+ * Server communication model that facilitates 
+ * communication and logic between multiple players in multiple games
  * @author dan
  *
  */
 public class ServerModel {
 	
+	// Private members
 	private HashMap<Integer,Game> games = new HashMap<Integer,Game>();
-	
 	private ServerModelListenerInterface modelListener;
 	
-	public ServerModel() {}
-	
+	/**
+	 * Adds a game
+	 * @param gameId
+	 * @param game
+	 * @return
+	 */
 	public boolean addGame(int gameId, Game game) {
 		if(!games.containsKey(gameId)) {
 			games.put(gameId, game);
@@ -27,6 +31,11 @@ public class ServerModel {
 		}
 	}
 	
+	/**
+	 * Removes a game
+	 * @param gameId
+	 * @return
+	 */
 	public boolean removeGame(int gameId) {
 		if(!games.containsKey(gameId)) {
 			games.remove(gameId);
@@ -36,29 +45,59 @@ public class ServerModel {
 		}
 	}
 	
+	/**
+	 * Sets cell of given gameId, playerId with given value
+	 * @param gameId
+	 * @param playerId
+	 * @param value
+	 * @return
+	 */
 	public boolean setCell(int gameId, int playerId, String value) {
 		return ((Game)games.get(gameId)).set(playerId, value);
 	}
 	
+	/**
+	 * Gets the model to invoke modelListener's method
+	 * that returns the value of the given gameId and playerId's cell
+	 * @param gameId
+	 * @param playerId
+	 */
 	public void getCell(int gameId, int playerId) {
 		modelListener.setCell(((Game)games.get(gameId)).get(playerId));
 	}
 	
-	public void getGames() {
+	/**
+	 * Gets the model to invoke modelListener's method 
+	 * that returns list of gameIds to the caller
+	 */
+	public void getGameIds() {
 		modelListener.setGames((Integer[])games.keySet().toArray());
 	}
 	
+	/**
+	 * Gets the model to invoke modelListener's methods
+	 * that return the joining game's seed, last card index, playerIds, and 
+	 * @param gameId
+	 */
 	public void joinGame(int gameId) {
 		Game gameToJoin = (Game)games.get(gameId);
 		modelListener.setGameSeed(gameToJoin.getSeed());
+		modelListener.setLastCardIndex(gameToJoin.getLastCardIndex());
 		modelListener.setPlayerId(gameToJoin.makeNewPlayer());
+		modelListener.setPlayers(gameToJoin.getPlayerIds());
 	}
 	
-	public void createGame(int seed) {
-		
+	/**
+	 * Gets the model to invoke modelListener's methods
+	 * that return the newly created game's id, and player id of the game creator 
+	 * @param seed
+	 */
+	public synchronized void createGame(int seed) {
+		int newGameId = 1;
+		while(games.keySet().contains(newGameId)) newGameId++;
+		Game newGame = new Game(newGameId, seed);
+		games.put(newGameId,newGame);
+		modelListener.setPlayerId(newGame.makeNewPlayer());
+		modelListener.setGameId(newGameId);
 	}
-		
-	// When new player joins:
-		// Calls setGameSeed( int seed );
-		// Calls setPlayer( List<Integer> playerIds (of that game))
 }
