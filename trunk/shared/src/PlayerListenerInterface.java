@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.List;
 
 /**
@@ -12,8 +13,6 @@ public interface PlayerListenerInterface {
 	void setCell( int gameId, int playerId, String value );
 	
 	void getCell( int gameId, int playerId );
-	
-	void setGames( List<Integer> gameList );
 	
 	void getGames();
 	

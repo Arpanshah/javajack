@@ -13,19 +13,30 @@ import java.util.List;
 public class Game {
 
 	// Private members
-	private int gameId = 0;
+	private int id = 0;
 	private int seed = 0;
 	private int lastCardIndex = 0;
 	private List<Cell<String>> playerCells = new ArrayList<Cell<String>>();
 	
+	/**
+	 * 
+	 */
 	public Game() {}
 	
 	/**
-	 * Constructor with gameId parameter
+	 * Constructor with seed parameter
+	 * @param seed
+	 */
+	public Game(int seed) {
+		this.seed = seed;
+	}
+	
+	/**
+	 * Constructor with gameId, seed, and lastCardIndex parameters
 	 * @param gameId
 	 */
-	public Game(int gameId, int seed, int lastCardIndex) {
-		this.gameId = gameId;
+	public Game(int id, int seed, int lastCardIndex) {
+		this.id = id;
 		this.seed = seed;
 		this.lastCardIndex = lastCardIndex;
 	}
@@ -34,8 +45,32 @@ public class Game {
 	 * Gets this game's id
 	 * @return this game's id
 	 */
-	public int getGameId() {
-		return gameId;
+	public int getId() {
+		return id;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getSeed() {
+		return seed;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getLastCardIndex() {
+		return lastCardIndex;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Integer> getPlayers() {
+		
 	}
 	
 	/**
