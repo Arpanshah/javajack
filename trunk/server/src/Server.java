@@ -9,7 +9,7 @@ import java.net.Socket;
  * @author dan
  *
  */
-public class ServerWorker implements Runnable{
+public class Server{
 
 	// Private members
 	private ClientProxy proxy;
@@ -77,5 +77,15 @@ public class ServerWorker implements Runnable{
 
 	public void run() {
 		proxy();
+	}
+	
+	public static void main(String [] args) {
+		
+	}
+}
+
+class Reader extends Thread {
+	public Reader() {
+		
 	}
 }
