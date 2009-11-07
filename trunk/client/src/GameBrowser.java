@@ -83,6 +83,12 @@ public class GameBrowser {
 					createJavajack();
 				}
 			}
+
+			@Override
+			public void setGameId(int gameId) {
+				// TODO Auto-generated method stub
+				
+			}
 			
 		});
 	}
