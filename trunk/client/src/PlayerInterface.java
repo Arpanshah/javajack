@@ -24,7 +24,7 @@ public interface PlayerInterface {
 	
 	public void tellBet(int playerId, int amount);
 	
-	public void tellCard();
+	public void tellCard(int playerId, int index);
 	
 	public int getMove();
 	
