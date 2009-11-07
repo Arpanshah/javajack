@@ -40,16 +40,8 @@ public class ServerProxy implements PlayerListenerInterface {
 			finalize();		
 		}
     }
-	
-    private ServerProxy() {
-		try {
-			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-			out = new PrintStream(s.getOutputStream(), true);
-		} catch (IOException e) {
-			System.err.println(s.getInetAddress().toString().substring(1) + ":" + s.getPort() +  " <-- I/O error");
-			finalize();		
-		}
-    }
+
+    private ServerProxy() {}
 
 	public void createGame(int seed) {
 		out.println("createGame " + seed);

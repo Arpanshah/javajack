@@ -81,7 +81,7 @@ public class Server{
 	public static void main(String [] args) {
 		String host = "";
 		int port = 0;
-		if( args.length != 2) {
+		if(args.length == 2) {
 			host = args[0];
 			port = Integer.parseInt(args[1]);
 		}
