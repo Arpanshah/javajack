@@ -119,6 +119,6 @@ public class ClientProxy implements ServerModelListenerInterface {
 			throw new NullPointerException();
 		}
 		this.listener = listener;
-		}
 	}
 }
+

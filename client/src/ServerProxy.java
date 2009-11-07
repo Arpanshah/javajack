@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class ServerProxy implements PlayerListenerInterface {
 
+	// 
 	private static ServerProxy instance;
 	private Socket s;
 	
