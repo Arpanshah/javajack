@@ -113,8 +113,8 @@ public class GameBrowser {
 			players.add( new RemotePlayer( id.intValue() ) );
 		}
 		
-		Dealer dealer = new Dealer( players, gameSeed );
-		Javajack game = new Javajack( dealer );
+		Referee referee = new Referee( players, gameSeed );
+		Javajack game = new Javajack( referee );
 	}
 
 	public void getGames() {
