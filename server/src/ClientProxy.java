@@ -90,8 +90,8 @@ public class ClientProxy implements ServerModelListenerInterface {
 	 * sends list of player ids to the client
 	 */
 	public void setPlayers(List<Integer> playerIds) {
-		String sendString = "setGames";
-		if(playerIds.size() == 0) {
+		String sendString = "setPlayers";
+		if(playerIds.size() != 0) {
 			for(int i = 0; i < playerIds.size(); i++) {
 				sendString += " " + playerIds.get(i);
 			}
