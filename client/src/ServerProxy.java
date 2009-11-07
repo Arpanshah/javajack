@@ -2,7 +2,12 @@
  * $Id$
  */
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +19,8 @@ public class ServerProxy implements PlayerListenerInterface {
 	// 
 	private static ServerProxy instance;
 	private Socket s;
+	private BufferedReader in;
+	private PrintStream out;
 	
 	private ServerModelListenerInterface listener;
 	
@@ -25,51 +32,64 @@ public class ServerProxy implements PlayerListenerInterface {
     
     public void setSocket( Socket s ) {
     	instance.s = s;
+		try {
+			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			out = new PrintStream(s.getOutputStream(), true);
+		} catch (IOException e) {
+			System.err.println(s.getInetAddress().toString().substring(1) + ":" + s.getPort() +  " <-- I/O error");
+			finalize();		
+		}
     }
 	
     private ServerProxy() {
+		try {
+			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			out = new PrintStream(s.getOutputStream(), true);
+		} catch (IOException e) {
+			System.err.println(s.getInetAddress().toString().substring(1) + ":" + s.getPort() +  " <-- I/O error");
+			finalize();		
+		}
     }
 
-	@Override
 	public void createGame(int seed) {
-		// TODO Auto-generated method stub
-		
+		out.println("createGame " + seed);
 	}
 
-	@Override
 	public void getCell(int gameId, int playerId) {
-		// TODO Auto-generated method stub
-		
+		out.println("getCell " + gameId + " " + playerId);
 	}
 
-	@Override
 	public void getGames() {
-		// TODO Auto-generated method stub
-		
+		out.println("getGames");
 	}
 
-	@Override
 	public void getLastCardIndex(int gameId) {
-		// TODO Auto-generated method stub
-		
+		out.println("getLastCardIndex " + gameId);
 	}
 
-	@Override
 	public void getPlayers(int gameId) {
-		// TODO Auto-generated method stub
-		
+		out.println("getPlayers " + gameId);
 	}
 
-	@Override
 	public void joinGame(int gameId) {
-		// TODO Auto-generated method stub
-		
+		out.println("joinGame " + gameId);
 	}
 
-	@Override
 	public void setCell(int gameId, int playerId, String value) {
-		// TODO Auto-generated method stub
-		
+		out.println("setCell " + gameId + " " + playerId + " " + value);
+	}
+	
+	/**
+	 * Closes open stream and socket
+	 */
+	public void finalize() {
+		try{
+			out.close();
+			s.close();
+			System.out.println(s.getInetAddress().toString().substring(1) + ":" + s.getPort() +  " close");
+		} catch (IOException e) {
+			System.err.println(s.getInetAddress().toString().substring(1) + ":" + s.getPort() +  " --> I/O error");
+		}
 	}
 	
 	/**
@@ -84,4 +104,42 @@ public class ServerProxy implements PlayerListenerInterface {
 		this.listener = listener;
 	}  
 
+	private class Reader extends Thread {
+		public void run() {
+			try {
+				while(true) {
+					String [] tokens = in.readLine().split(" ");
+					String command = tokens[0];
+					
+					if(command.equals("setCell")) {
+						listener.setCell(tokens[1]);
+					} else if (command.equals("setGameSeed")) {
+						listener.setGameSeed(Integer.parseInt(tokens[1]));
+					} else if(command.equals("setPlayerId")) {
+						listener.setPlayerId(Integer.parseInt(tokens[1]));
+					} else if (command.equals("setGames")) {
+						Integer [] gameIds = new Integer [tokens.length -1];
+						if(!tokens[1].equals("*")) {
+							for(int i = 1; i < tokens.length; i++) {
+								gameIds[i-1] = Integer.parseInt(tokens[i]);
+							}
+						}
+						listener.setGames(gameIds);
+					} else if(command.equals("setPlayers")) {
+						List<Integer> playerIds = new ArrayList<Integer>();
+						if(!tokens[1].equals("*")) {
+							for(int i = 1; i < tokens.length; i++) {
+								playerIds.add(Integer.parseInt(tokens[i]));
+							}
+						}
+						listener.setPlayers(playerIds);
+					} else if (command.equals("setLastCardIndex")) {
+						listener.setLastCardIndex(Integer.parseInt(tokens[1]));
+					} else if(command.equals("setGameId")) {
+						listener.setGameId(Integer.parseInt(tokens[1]));
+					}
+				}
+			} catch (Exception e) {}
+		}
+	}
 }
