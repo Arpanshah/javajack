@@ -70,12 +70,6 @@ public class ServerProxy implements PlayerListenerInterface {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void setGames(List<Integer> gameList) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	/**
 	 * Sets the ServerModelListener of this proxy.

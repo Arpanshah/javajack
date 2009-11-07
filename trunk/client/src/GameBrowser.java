@@ -124,12 +124,9 @@ public class GameBrowser {
 	// If player wants to create a new game:
 		// Generate seed
 		// Create LocalPlayer
-		// Create a Dealer with List<PlayerInterface>
-		// Pass seed and Dealer to constructor of Javajack
+		// Create a Dealer with List<PlayerInterface> and seed
+		// Pass Dealer to constructor of Javajack
 	// If player wants to join an already created game:
-		// while ( gameInProgress ) {
-			// isGameInProgess()
-		// }
 		// getSeed()
 		// getListOfPlayers
 		// getLastCardIndex
