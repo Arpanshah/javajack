@@ -116,10 +116,10 @@ public class GameBrowser {
 			if ( id.intValue() == playerId ) { // If it's me, skip it
 				continue;
 			} // otherwise
-			players.add( new RemotePlayer( id.intValue() ) );
+			players.add( new RemotePlayer( gameToJoin, playerId ) );
 		}
 		
-		Referee referee = new Referee( players, gameSeed );
+		Referee referee = new Referee( players, gameSeed, gameToJoin );
 		Javajack game = new Javajack( referee );
 	}
 
