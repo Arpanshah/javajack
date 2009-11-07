@@ -15,4 +15,5 @@ public interface ServerModelListenerInterface {
 	void setGames(Integer[] gameIds);
 	void setPlayers(List<Integer> playerIds);
 	void setLastCardIndex(int index);
+	void setGameId(int gameId);
 }

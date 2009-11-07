@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class Game {
 	private int id = 0;
 	private int seed = 0;
 	private int lastCardIndex = 0;
-	private List<Cell<String>> playerCells = new ArrayList<Cell<String>>();
+	private HashMap<Integer,Cell<String>> playerCells = new HashMap<Integer,Cell<String>>();
 	
 	/**
 	 * 
@@ -27,7 +28,7 @@ public class Game {
 	 * Constructor with seed parameter
 	 * @param seed
 	 */
-	public Game(int seed) {
+	public Game(int id, int seed) {
 		this.seed = seed;
 	}
 	
@@ -58,7 +59,7 @@ public class Game {
 	}
 	
 	/**
-	 * 
+	 * Gets last dealt card's index
 	 * @return
 	 */
 	public int getLastCardIndex() {
@@ -66,11 +67,16 @@ public class Game {
 	}
 	
 	/**
-	 * 
+	 * gets list of player ids
 	 * @return
 	 */
-	public List<Integer> getPlayers() {
-		
+	public List<Integer> getPlayerIds() {
+		List<Integer> returnList = new ArrayList<Integer>();
+		for(int i = 0; i <= playerCells.size(); i++) {
+			// 0 is dealer
+			returnList.add(i);
+		}
+		return returnList;
 	}
 	
 	/**
@@ -78,8 +84,24 @@ public class Game {
 	 * @return new player's id
 	 */
 	public synchronized int makeNewPlayer() {
-		playerCells.add(new Cell<String>());
-		return playerCells.size();
+		int newPlayerId = 1;
+		while(playerCells.containsKey(newPlayerId)) newPlayerId++;
+		playerCells.put(newPlayerId,new Cell<String>());
+		return newPlayerId;
+	}
+	
+	/**
+	 * Remove player with given playerId
+	 * @param playerId
+	 * @return
+	 */
+	public synchronized boolean removePlayer(int playerId) {
+		if(playerCells.containsKey(playerId)) {
+			playerCells.remove(playerId);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
@@ -88,11 +110,7 @@ public class Game {
 	 * @return playerId's cell's value
 	 */
 	public String get(int playerId) {
-		if(playerId <= playerCells.size()) {
-			return playerCells.get(playerId--).get();
-		} else {
-			return null;
-		}
+		return playerCells.get(playerId).get();
 	}
 	
 	/**
@@ -101,9 +119,9 @@ public class Game {
 	 * @param value
 	 * @return true if successfully set, else false
 	 */
-	public boolean set(int playerId, String value) {
-		if(playerId <= playerCells.size()) {
-			playerCells.get(playerId--).set(value);
+	public synchronized boolean set(int playerId, String value) {
+		if(playerCells.containsKey(playerId)) {
+			playerCells.get(playerId).set(value);
 			return true;
 		} else {
 			return false;
