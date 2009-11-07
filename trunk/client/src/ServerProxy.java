@@ -52,6 +52,7 @@ public class ServerProxy implements PlayerListenerInterface {
 	}
 
 	public void getGames() {
+		System.out.println( "ServerProxy.getGames(): sending \"getGames\" to Server" );
 		out.println("getGames");
 	}
 
@@ -94,14 +95,22 @@ public class ServerProxy implements PlayerListenerInterface {
 			throw new NullPointerException( "ServerProxy.setListener(): listener is null" );
 		}
 		this.listener = listener;
-	}  
-
+	}
+	
+	public void start() {
+		new Reader().start();
+	}
+	
 	private class Reader extends Thread {
 		public void run() {
 			try {
+				System.out.println( "ServerProxy Reader started!" );
 				while(true) {
+					System.out.println("ServerProxy Reader: top of while");
 					String [] tokens = in.readLine().split(" ");
 					String command = tokens[0];
+					
+					System.out.println( "ServerProxy.Reader: got command = " + command );
 					
 					if(command.equals("setCell")) {
 						listener.setCell(tokens[1]);
