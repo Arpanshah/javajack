@@ -1,5 +1,3 @@
-import com.cloudgarden.layout.AnchorConstraint;
-import com.cloudgarden.layout.AnchorLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -58,10 +56,9 @@ public class GameBrowserGUI extends JFrame {
 			getContentPane().setLayout(null);
 			{
 				final JButton joinGameButton = new JButton( "Join Game" );
-				getContentPane().add(joinGameButton, new AnchorConstraint(343, 678, 468, 300, AnchorConstraint.ANCHOR_REL, AnchorConstraint.ANCHOR_REL, AnchorConstraint.ANCHOR_REL, AnchorConstraint.ANCHOR_REL));
+				getContentPane().add(joinGameButton );
 				joinGameButton.setBounds(199, 143, 128, 22);
 				joinGameButton.addActionListener( new ActionListener() {
-					@Override
 					public void actionPerformed(ActionEvent e) {
 						g.joinGame( (Integer)games.getSelectedValue() );
 					}
