@@ -15,6 +15,12 @@ public class ServerModel {
 	// Private members
 	private HashMap<Integer,Game> games = new HashMap<Integer,Game>();
 	private ServerModelListenerInterface modelListener;
+	private static ServerModel instance;
+	
+	/**
+	 * Private singleton constructor
+	 */
+	private ServerModel() {}
 	
 	/**
 	 * Adds a game
@@ -100,5 +106,34 @@ public class ServerModel {
 		games.put(newGameId,newGame);
 		modelListener.setPlayerId(newGame.makeNewPlayer());
 		modelListener.setGameId(newGameId);
+	}
+
+	/**
+	 * Singleton getter
+	 * @return
+	 */
+	public static ServerModel getInstance() {
+		if(instance == null) {
+			instance = new ServerModel();
+		}
+		return instance;
+	}
+
+	/**
+	 * Gets the model to invoke modelListener's method that
+	 * returns the last dealt card's index
+	 * @param gameId
+	 */
+	public void getLastCardIndex(int gameId) {
+		modelListener.setLastCardIndex(((Game)games.get(gameId)).getLastCardIndex());		
+	}
+
+	/**
+	 * Gets the model to invoke modelListener's method that
+	 * returns the list of player id's in this game
+	 * @param gameId
+	 */
+	public void getPlayerIds(int gameId) {
+		modelListener.setPlayers(((Game)games.get(gameId)).getPlayerIds());
 	}
 }

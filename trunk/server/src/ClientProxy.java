@@ -14,8 +14,9 @@ import java.util.List;
 public class ClientProxy implements ServerModelListenerInterface {
 
 	// Private members
-	Socket socket;
-	PrintStream out;
+	private Socket socket;
+	private PrintStream out;
+	private PlayerListenerInterface listener;
 	
 	/**
 	 * Constructor that takes a socket
@@ -106,6 +107,18 @@ public class ClientProxy implements ServerModelListenerInterface {
 			System.out.println(socket.getInetAddress().toString().substring(1) + ":" + socket.getPort() +  " close");
 		} catch (IOException e) {
 			System.err.println(socket.getInetAddress().toString().substring(1) + ":" + socket.getPort() +  " --> I/O error");
+		}
+	}
+
+	/**
+	 * Sets the listener
+	 * @param playerListenerInterface
+	 */
+	public void setListener(PlayerListenerInterface listener) {
+		if( listener == null) {
+			throw new NullPointerException();
+		}
+		this.listener = listener;
 		}
 	}
 }
