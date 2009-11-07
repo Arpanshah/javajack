@@ -125,6 +125,10 @@ public class ClientProxy implements ServerModelListenerInterface {
 		this.listener = listener;
 	}
 	
+	public void start() {
+		new Reader().start();
+	}
+	
 	private class Reader extends Thread {
 		public void run() {
 			try {

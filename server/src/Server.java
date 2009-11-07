@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
@@ -19,7 +22,7 @@ public class Server{
 	 * Constructor that takes a socket
 	 * @param socket
 	 */
-	public ServerWorker(Socket socket) {
+	public Server(Socket socket) {
 		model = ServerModel.getInstance();
 		proxy = new ClientProxy(socket);
 		proxy.setListener(new PlayerListenerInterface() {
@@ -74,18 +77,66 @@ public class Server{
 			}
 		});
 	}
-
-	public void run() {
-		proxy();
-	}
 	
 	public static void main(String [] args) {
+		String host = "";
+		int port = 0;
+		if( args.length != 2) {
+			host = args[0];
+			port = Integer.parseInt(args[1]);
+		}
 		
-	}
-}
+		ServerSocket ss;
+		try {
+			ss = new ServerSocket();
+			ss.bind(new InetSocketAddress(host, port));
 
-class Reader extends Thread {
-	public Reader() {
+		while(true) {
+			Socket socket = null;
+			socket = ss.accept();
+			
+			final ClientProxy proxy = new ClientProxy(socket);
+			final ServerModel model = ServerModel.getInstance();
+			
+			model.setListener(proxy);
+			
+			proxy.setListener(new PlayerListenerInterface() {
+
+				public void createGame(int seed) {
+					model.createGame(seed);
+				}
+
+				public void getCell(int gameId, int playerId) {
+					model.getCell(gameId, playerId);		
+				}
+
+				public void getGames() {
+					model.getGameIds();
+				}
+
+				public void getLastCardIndex(int gameId) {
+					model.getLastCardIndex(gameId);
+				}
+
+				public void getPlayers(int gameId) {
+					model.getPlayerIds(gameId);
+				}
+
+				public void joinGame(int gameId) {
+					model.joinGame(gameId);
+				}
+
+				public void setCell(int gameId, int playerId, String value) {
+					model.setCell(gameId, playerId, value);
+				}
+			});
+			
+			proxy.start();
+		}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }
