@@ -16,7 +16,7 @@ public interface PlayerInterface {
 	
 	public void tellPlayers(List<Integer> playerIds);
 	
-	public void getLastCardIndex();
+	public int getLastCardIndex();
 	
 	public void tellLastCardIndex(int index);
 	
