@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * $Id$
  */
@@ -8,11 +10,24 @@
  */
 public interface PlayerInterface {
 
-	int getMove();
-
-	int getBet(int gameId, int playerId);
-	int getId();
-
-	void setBet(int bet, int id, int gameId);
-
+	public int getId();	
+	
+	public List<Integer> getPlayers();
+	
+	public void tellPlayers(List<Integer> playerIds);
+	
+	public void getLastCardIndex();
+	
+	public void tellLastCardIndex(int index);
+	
+	public int getBet();
+	
+	public void tellBet(int playerId, int amount);
+	
+	public int tellCard();
+	
+	public int getMove();
+	
+	public void setResult(int result);
+	
 }
