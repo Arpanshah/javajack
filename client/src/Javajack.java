@@ -49,6 +49,7 @@ public class Javajack {
 	}
 
 	public Javajack( Referee referee ) {
+		System.out.println( "New game joined!" );
 		// Creates Deck from seed
 		// Gives Deck to Referee
 	}

@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,15 +37,17 @@ public class GameBrowser {
 		proxy = ServerProxy.getInstance();
 		proxy.setSocket( s );
 		
+		gui = new GameBrowserGUI( this );
+		gui.addListener( proxy );
+		gui.getGames();
+		
 		proxy.setListener( new ServerModelListenerInterface() {
 
-			
 			public void setCell(String value) {
 				// TODO Auto-generated method stub
 				
 			}
 
-			
 			public void setGameSeed(int seed) {
 				GameBrowser.this.gameSeed = seed;
 				if ( readyToJoinGame() ) {
@@ -52,29 +55,21 @@ public class GameBrowser {
 				}
 			}
 
-			
 			public void setLastCardIndex(int index) {
 				GameBrowser.this.lastCardIndex = index;
-				if ( readyToJoinGame() ) {
-					createJavajack();
-				}
-				
 			}
 
-			
 			public void setPlayers(List<Integer> playerIds) {
 				GameBrowser.this.playerIds = playerIds;
-				if ( readyToJoinGame() ) {
-					createJavajack();
-				}
 			}
 
-			
 			public void setGames(Integer[] gameIds) {
+				System.out.println("ServerProxy.setGames called (code in GameBrowser)");
 				gui.populateList( gameIds );
+				Graphics gfx = gui.getGraphics();
+				gui.update( gfx );
 			}
 
-			
 			public void setPlayerId(int playerId) {
 				GameBrowser.this.playerId = playerId;
 				if ( readyToJoinGame() ) {
@@ -82,48 +77,28 @@ public class GameBrowser {
 				}
 			}
 
-			
 			public void setGameId(int gameId) {
-				// TODO Auto-generated method stub
-				
+				GameBrowser.this.gameToJoin = gameId;
+				if ( readyToJoinGame() ) {
+					createJavajack();
+				}
 			}
-			
 		});
-		gui = new GameBrowserGUI( this );
-	}
-	
-	public void joinGame( Integer gameId ) {
-		gameToJoin = gameId;
-		proxy.joinGame( gameId ); // gameId.intValue() ?
-	}
-	
-	public void createGame( Integer gameId, int playerId ) {
-		Random r = new Random();
-		int seed = r.nextInt( Integer.MAX_VALUE );
-		proxy.createGame( seed );
+		
+		proxy.start();
 	}
 	
 	private boolean readyToJoinGame() {
-		return ( playerIds != null && playerId >= 0 && gameSeed >= 0 && gameToJoin >= 0 && lastCardIndex >=0 );
+		boolean returnVal = ( gameSeed >= 0 && gameToJoin >= 0 && playerId > 0 );
+		System.out.println("Ready to join game = " + returnVal );
+		return returnVal;
 	}
 	
 	private void createJavajack() {
-		List<PlayerInterface> players = new ArrayList<PlayerInterface>();
-		LocalPlayer localPlayer = new LocalPlayer( playerId );
-		players.add( localPlayer );
-		for ( Integer id : playerIds ) {
-			if ( id.intValue() == playerId ) { // If it's me, skip it
-				continue;
-			} // otherwise
-			players.add( new RemotePlayer( gameToJoin, playerId ) );
-		}
+		System.out.println("Creating Javajack..." );
 		
-		Referee referee = new Referee( players, gameSeed, gameToJoin );
+		Referee referee = new Referee( null, gameToJoin, gameSeed );
 		Javajack game = new Javajack( referee );
-	}
-
-	public void getGames() {
-		proxy.getGames(); // Ask the server for the games
 	}
 	
 	// If player wants to create a new game:
