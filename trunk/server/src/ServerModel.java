@@ -77,7 +77,12 @@ public class ServerModel {
 	 * that returns list of gameIds to the caller
 	 */
 	public void getGameIds() {
-		modelListener.setGames((Integer[])games.keySet().toArray());
+		Object[] g = games.keySet().toArray();
+		Integer[] convertedGames = new Integer[g.length];
+		for(int i = 0; i < g.length; i++) {
+			convertedGames[i] = (Integer)g[i];
+		}
+		modelListener.setGames(convertedGames);
 	}
 	
 	/**
