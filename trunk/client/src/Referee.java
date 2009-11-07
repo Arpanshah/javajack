@@ -16,7 +16,7 @@ public class Referee {
 	
 	public Referee( List<PlayerInterface> newPlayers, int seed, int gameId ) {
 		
-		RemotePlayer dealer = new RemotePlayer( 0 );
+		RemotePlayer dealer = new RemotePlayer( gameId, 0 );
 		players.add( dealer );
 		
 		for ( PlayerInterface player : newPlayers ) {
@@ -26,9 +26,9 @@ public class Referee {
 		for (;;) {
 			
 			for ( PlayerInterface p : players ) {
-				int bet = p.getBet( gameId, p.getId() );
-				for ( PlayerInterface p : players ) {
-					p.setBet( bet, p.getId(), gameId );
+				int bet = p.getBet( );
+				for ( PlayerInterface p2 : players ) {
+					p2.tellBet( p2.getId(), bet );
 				}
 				int move = p.getMove();
 				switch (move) {
