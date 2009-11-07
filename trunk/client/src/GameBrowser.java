@@ -23,8 +23,6 @@ public class GameBrowser {
 	List<Integer> playerIds;
 	int playerId;
 	
-	PlayerListenerInterface listener;
-	
 	public GameBrowser( Socket s ) {
 		
 		gameToJoin = -1;
@@ -34,17 +32,19 @@ public class GameBrowser {
 		playerId = -1;
 		
 		this.s = s;
+		
 		proxy = ServerProxy.getInstance();
 		proxy.setSocket( s );
 		
-		gui = new GameBrowserGUI( this );
 		proxy.setListener( new ServerModelListenerInterface() {
 
+			
 			public void setCell(String value) {
 				// TODO Auto-generated method stub
 				
 			}
 
+			
 			public void setGameSeed(int seed) {
 				GameBrowser.this.gameSeed = seed;
 				if ( readyToJoinGame() ) {
@@ -52,6 +52,7 @@ public class GameBrowser {
 				}
 			}
 
+			
 			public void setLastCardIndex(int index) {
 				GameBrowser.this.lastCardIndex = index;
 				if ( readyToJoinGame() ) {
@@ -60,6 +61,7 @@ public class GameBrowser {
 				
 			}
 
+			
 			public void setPlayers(List<Integer> playerIds) {
 				GameBrowser.this.playerIds = playerIds;
 				if ( readyToJoinGame() ) {
@@ -67,10 +69,12 @@ public class GameBrowser {
 				}
 			}
 
+			
 			public void setGames(Integer[] gameIds) {
 				gui.populateList( gameIds );
 			}
 
+			
 			public void setPlayerId(int playerId) {
 				GameBrowser.this.playerId = playerId;
 				if ( readyToJoinGame() ) {
@@ -78,23 +82,25 @@ public class GameBrowser {
 				}
 			}
 
+			
 			public void setGameId(int gameId) {
 				// TODO Auto-generated method stub
 				
 			}
 			
 		});
+		gui = new GameBrowserGUI( this );
 	}
 	
 	public void joinGame( Integer gameId ) {
 		gameToJoin = gameId;
-		listener.joinGame( gameId ); // gameId.intValue() ?
+		proxy.joinGame( gameId ); // gameId.intValue() ?
 	}
 	
 	public void createGame( Integer gameId, int playerId ) {
 		Random r = new Random();
 		int seed = r.nextInt( Integer.MAX_VALUE );
-		listener.createGame( seed );
+		proxy.createGame( seed );
 	}
 	
 	private boolean readyToJoinGame() {
@@ -117,7 +123,7 @@ public class GameBrowser {
 	}
 
 	public void getGames() {
-		listener.getGames(); // Ask the server for the games
+		proxy.getGames(); // Ask the server for the games
 	}
 	
 	// If player wants to create a new game:
