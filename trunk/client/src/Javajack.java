@@ -48,7 +48,7 @@ public class Javajack {
 		
 	}
 
-	public Javajack( int seed, Dealer d ) {
+	public Javajack( Dealer d ) {
 		// Creates Deck from seed
 		// Gives Deck to Dealer
 		// Creates Dealer( 
