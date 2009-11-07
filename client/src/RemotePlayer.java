@@ -84,9 +84,8 @@ public class RemotePlayer implements PlayerInterface {
 		// nothing to do
 	}
 
-	public int tellCard() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void tellCard() {
+		proxy.setCell(gameId, playerId, value)
 	}
 
 	public void tellLastCardIndex(int index) {
