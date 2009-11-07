@@ -136,4 +136,8 @@ public class ServerModel {
 	public void getPlayerIds(int gameId) {
 		modelListener.setPlayers(((Game)games.get(gameId)).getPlayerIds());
 	}
+
+	public void setListener(ServerModelListenerInterface listener) {
+		modelListener = listener;
+	}
 }
