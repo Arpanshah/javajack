@@ -13,14 +13,16 @@ import java.util.HashMap;
 public class ServerModel {
 	
 	// Private members
-	private HashMap<Integer,Game> games = new HashMap<Integer,Game>();
+	private HashMap<Integer,Game> games;
 	private ServerModelListenerInterface modelListener;
-	private static ServerModel instance;
+	private ServerModel model;
 	
 	/**
 	 * Private singleton constructor
 	 */
-	private ServerModel() {}
+	public ServerModel() {
+		games = GameDB.getDB();
+	}
 	
 	/**
 	 * Adds a game
@@ -111,17 +113,6 @@ public class ServerModel {
 		games.put(newGameId,newGame);
 		modelListener.setPlayerId(newGame.makeNewPlayer());
 		modelListener.setGameId(newGameId);
-	}
-
-	/**
-	 * Singleton getter
-	 * @return
-	 */
-	public static ServerModel getInstance() {
-		if(instance == null) {
-			instance = new ServerModel();
-		}
-		return instance;
 	}
 
 	/**

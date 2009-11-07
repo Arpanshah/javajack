@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,27 +28,34 @@ public class RemotePlayer implements PlayerInterface {
 			}
 
 			public void setGameId(int gameId) {
-
+				// Nothing to do
 			}
 
 			public void setGameSeed(int seed) {
-
+				// Nothing to do
 			}
 
 			public void setGames(Integer[] gameIds) {
-
+				// Nothing to do
 			}
 
 			public void setLastCardIndex(int index) {
-				
+				// Nothing to do
 			}
 
 			public void setPlayerId(int playerId) {
-				
+				// Nothing to do
 			}
 
 			public void setPlayers(List<Integer> playerIds) {
-				
+				String value = "";
+				for(int i = 0; i < playerIds.size(); i++) {
+					value += playerIds.get(i).toString();
+					if(playerIds.size() - 1 != i) {
+						value += " ";
+					}
+				}
+				cell.set(value);
 			}
 		} );
 	}
@@ -72,8 +80,14 @@ public class RemotePlayer implements PlayerInterface {
 	}
 
 	public List<Integer> getPlayers() {
-		// TODO Auto-generated method stub
-		return null;
+		proxy.getPlayers(gameId);
+		String playersString = cell.get();
+		String[] tokens = playersString.split(" ");
+		List<Integer> convertedPlayers = new ArrayList<Integer>();
+		for(int i = 0; i < tokens.length; i++) {
+			convertedPlayers.add(Integer.parseInt(tokens[i]));
+		}
+		return convertedPlayers;
 	}
 
 	public void setResult(int result) {
@@ -81,18 +95,23 @@ public class RemotePlayer implements PlayerInterface {
 	}
 
 	public void tellBet(int playerId, int amount) {
-		// nothing to do
+		proxy.setCell(gameId, playerId, amount + "");
 	}
 
 
 	public void tellLastCardIndex(int index) {
-		// TODO Auto-generated method stub
-		
+		proxy.setCell(gameId, playerId, index + "");
 	}
 
 	public void tellPlayers(List<Integer> playerIds) {
-		// TODO Auto-generated method stub
-		
+		String value = "";
+		for(int i = 0; i < playerIds.size(); i++) {
+			value += playerIds.get(i).toString();
+			if(playerIds.size() - 1 != i) {
+				value += " ";
+			}
+		}
+		proxy.setCell(gameId, playerId, value);
 	}
 
 	public void tellCard(int playerId, int index) {

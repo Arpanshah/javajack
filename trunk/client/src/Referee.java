@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,22 +14,36 @@ public class Referee {
 	
 	private static final int HIT_VALUE = -1;
 	private static final int STAND_VALUE = -2;
-	List<PlayerInterface> players;
+	private HashMap<Integer, PlayerInterface> players;
+	
+	private int lastCardIndex;
 	
 	public Referee( List<PlayerInterface> newPlayers, int seed, int gameId ) {
 		
 		RemotePlayer dealer = new RemotePlayer( gameId, 0 );
-		players.add( dealer );
+		players.put( 0, dealer );
 		
 		for ( PlayerInterface player : newPlayers ) {
-			players.add( player );
+			players.put( player.getId(), player );
+		}
+		
+		Object[] g = players.keySet().toArray();
+		List<Integer> convertedPlayers = new ArrayList<Integer>();
+		for(int i = 0; i < g.length; i++) {
+			convertedPlayers.add((Integer)g[i]);
 		}
 		
 		for (;;) {
 			
-			for ( PlayerInterface p : players ) {
+			for ( PlayerInterface p : players.values() ) {
+				p.tellPlayers(convertedPlayers);
+				
+				p.tellLastCardIndex(lastCardIndex);
+			}
+			for ( PlayerInterface p : players.values() ) {
+				
 				int bet = p.getBet( );
-				for ( PlayerInterface p2 : players ) {
+				for ( PlayerInterface p2 : players.values() ) {
 					p2.tellBet( p2.getId(), bet );
 				}
 				int move = p.getMove();
