@@ -12,15 +12,21 @@ import java.util.List;
 public class ServerProxy implements PlayerListenerInterface {
 
 	private static ServerProxy instance;
+	private Socket s;
+	
+	private ServerModelListenerInterface listener;
 	
     public static ServerProxy getInstance() {
         if ( instance == null )
             instance = new ServerProxy();
         return instance; 
-    } 
+    }
+    
+    public void setSocket( Socket s ) {
+    	instance.s = s;
+    }
 	
     private ServerProxy() {
-        ; // starts with the current time
     }
 
 	@Override
@@ -69,6 +75,18 @@ public class ServerProxy implements PlayerListenerInterface {
 	public void setGames(List<Integer> gameList) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	/**
+	 * Sets the ServerModelListener of this proxy.
+	 * 
+	 * @param listener the new listener
+	 */
+	public void setListener( ServerModelListenerInterface listener ) {
+		if ( listener == null ) {
+			throw new NullPointerException( "ServerProxy.setListener(): listener is null" );
+		}
+		this.listener = listener;
 	}  
 
 }
