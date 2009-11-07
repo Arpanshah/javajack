@@ -1,12 +1,64 @@
+import java.net.Socket;
+import java.util.List;
+
 /**
  * $Id$
  */
 
 /**
- * @author dan
+ * @author dan.arnold
  *
  */
 public class GameBrowser {
+	
+	Socket s;
+	ServerProxy proxy;
+	GameBrowserGUI gui;
+	
+	public GameBrowser( Socket s ) {
+		this.s = s;
+		proxy = ServerProxy.getInstance();
+		proxy.setSocket( s );
+		
+		gui = new GameBrowserGUI( this );
+		proxy.setListener( new ServerModelListenerInterface() {
+
+			@Override
+			public void setCell(String value) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void setGameSeed(int seed) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void setGames(List<Integer> gameIds) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void setLastCardIndex(int index) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void setPlayers(List<Integer> playerIds) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+	}
+	
+	public void joinGame( Javajack g ) {
+		
+	}
 	// If player wants to create a new game:
 		// Generate seed
 		// Create LocalPlayer

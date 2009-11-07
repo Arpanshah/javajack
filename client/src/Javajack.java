@@ -1,6 +1,11 @@
+
 /**
  * $Id$
  */
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 /**
  * @author dan
@@ -12,12 +17,38 @@ public class Javajack {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		if ( args.length != 2 )
+			printUsageAndExit();
+		String host = args[0];
+		int port = -1;
+		try {
+			port = Integer.parseInt( args[1] );
+		} catch ( NumberFormatException e ) {
+			System.err.println( "Error: The port number must be an integer!" );
+			printUsageAndExit();
+		}
+		
+		Socket socket = new Socket();
+		try {
+			socket.connect( new InetSocketAddress( host, port ) );
+		} catch ( IOException e ) {
+			System.err.println( "A connection cannot be made to " + host + ":"
+					+ port + "." );
+			printUsageAndExit();
+		}
+		
+		GameBrowser g = new GameBrowser( socket );
 		
 		// Start GameBrowserGUI
 	}
 	
-	public Javajack( int seed, Dealer ) {
+	private static void printUsageAndExit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Javajack( int seed, Dealer d ) {
 		// Creates Deck from seed
 		// Gives Deck to Dealer
 		// Creates Dealer( 
