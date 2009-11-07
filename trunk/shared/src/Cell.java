@@ -1,5 +1,3 @@
-import javax.management.monitor.Monitor;
-
 /**
  * $Id$
  */
