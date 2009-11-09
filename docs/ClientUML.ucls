@@ -2,7 +2,7 @@
   realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
   <class corner="BOTTOM_RIGHT" language="java" name="Javajack" project="JavajackClient" 
     file="/JavajackClient/src/Javajack.java" binary="false">    
-    <position x="197" y="587" width="146" height="99"/>    
+    <position x="62" y="571" width="146" height="99"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -10,7 +10,7 @@
   </class>  
   <class corner="BOTTOM_RIGHT" language="java" name="Referee" project="JavajackClient" 
     file="/JavajackClient/src/Referee.java" binary="false">    
-    <position x="238" y="726" width="200" height="115"/>    
+    <position x="62" y="710" width="200" height="115"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -18,7 +18,7 @@
   </class>  
   <class corner="BOTTOM_RIGHT" language="java" name="GameBrowser" project="JavajackClient" 
     file="/JavajackClient/src/GameBrowser.java" binary="false">    
-    <position x="364" y="352" width="161" height="195"/>    
+    <position x="229" y="336" width="161" height="195"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -26,7 +26,7 @@
   </class>  
   <class corner="BOTTOM_RIGHT" language="java" name="GameBrowserGUI" project="JavajackClient" 
     file="/JavajackClient/src/GameBrowserGUI.java" binary="false">    
-    <position x="364" y="37" width="226" height="275"/>    
+    <position x="350" y="37" width="226" height="259"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -34,7 +34,7 @@
   </class>  
   <class corner="BOTTOM_RIGHT" language="java" name="LocalPlayer" project="JavajackClient" 
     file="/JavajackClient/src/LocalPlayer.java" binary="false">    
-    <position x="41" y="881" width="168" height="259"/>    
+    <position x="387" y="865" width="168" height="259"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -42,7 +42,7 @@
   </class>  
   <class corner="BOTTOM_RIGHT" language="java" name="LocalPlayerGUI" project="JavajackClient" 
     file="/JavajackClient/src/LocalPlayerGUI.java" binary="false">    
-    <position x="121" y="37" width="123" height="131"/>    
+    <position x="182" y="37" width="123" height="131"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -50,7 +50,7 @@
   </class>  
   <interface corner="BOTTOM_RIGHT" language="java" name="PlayerInterface" project="JavajackClient" 
     file="/JavajackClient/src/PlayerInterface.java" binary="false">    
-    <position x="230" y="1196" width="168" height="211"/>    
+    <position x="387" y="1180" width="168" height="211"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -58,7 +58,7 @@
   </interface>  
   <class corner="BOTTOM_RIGHT" language="java" name="RemotePlayer" project="JavajackClient" 
     file="/JavajackClient/src/RemotePlayer.java" binary="false">    
-    <position x="270" y="881" width="168" height="275"/>    
+    <position x="62" y="865" width="168" height="275"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -66,7 +66,7 @@
   </class>  
   <class corner="BOTTOM_RIGHT" language="java" name="ServerProxy.Reader" project="JavajackClient" 
     file="/JavajackClient/src/ServerProxy.java" binary="false">    
-    <position x="459" y="1569" width="84" height="67"/>    
+    <position x="274" y="1537" width="84" height="67"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -74,7 +74,7 @@
   </class>  
   <class corner="BOTTOM_RIGHT" language="java" name="ServerProxy" project="JavajackClient" 
     file="/JavajackClient/src/ServerProxy.java" binary="false">    
-    <position x="459" y="1196" width="254" height="323"/>    
+    <position x="83" y="1180" width="254" height="307"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -82,32 +82,43 @@
   </class>  
   <class corner="BOTTOM_RIGHT" language="java" name="JavajackGUI" project="JavajackClient" 
     file="/JavajackClient/src/JavajackGUI.java" binary="false">    
-    <position x="630" y="37" width="93" height="51"/>    
+    <position x="45" y="37" width="93" height="51"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="PlayerListenerInterface" project="JavajackShared" 
+    file="/JavajackShared/src/PlayerListenerInterface.java" binary="false">    
+    <position x="419" y="1537" width="157" height="163"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="ServerModelListenerInterface" project="JavajackShared" 
+    file="/JavajackShared/src/ServerModelListenerInterface.java" binary="false">    
+    <position x="41" y="1537" width="193" height="163"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <dependency>    
+    <source project="JavajackClient" name="GameBrowser" file="/JavajackClient/src/GameBrowser.java" binary="false"/>    
+    <target project="JavajackClient" name="Javajack" file="/JavajackClient/src/Javajack.java" binary="false"/>  
+  </dependency>  
   <association>    
-    <source project="JavajackClient" name="RemotePlayer" file="/JavajackClient/src/RemotePlayer.java" binary="false" 
+    <bendpoint x="313" y="865"/>    
+    <source project="JavajackClient" name="Referee" file="/JavajackClient/src/Referee.java" binary="false" 
       navigable="false">      
-      <attribute name="proxy"/>      
-      <multiplicity minimum="0" maximum="1"/>    
+      <attribute name="players"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
     </source>    
-    <target project="JavajackClient" name="ServerProxy" file="/JavajackClient/src/ServerProxy.java" binary="false" 
-      navigable="true"/>    
+    <target project="JavajackClient" name="PlayerInterface" file="/JavajackClient/src/PlayerInterface.java" 
+      binary="false" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting>    
-    <source project="JavajackClient" name="ServerProxy" file="/JavajackClient/src/ServerProxy.java" binary="false"/>    
-    <target project="JavajackClient" name="ServerProxy.Reader" file="/JavajackClient/src/ServerProxy.java" 
-      binary="false"/>  
-  </nesting>  
-  <realization>    
-    <source project="JavajackClient" name="LocalPlayer" file="/JavajackClient/src/LocalPlayer.java" binary="false"/>    
-    <target project="JavajackClient" name="PlayerInterface" file="/JavajackClient/src/PlayerInterface.java" 
-      binary="false"/>  
-  </realization>  
   <association>    
     <source project="JavajackClient" name="GameBrowserGUI" file="/JavajackClient/src/GameBrowserGUI.java" binary="false" 
       navigable="false">      
@@ -118,28 +129,93 @@
       navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <dependency>    
+    <source project="JavajackClient" name="Referee" file="/JavajackClient/src/Referee.java" binary="false"/>    
+    <target project="JavajackClient" name="RemotePlayer" file="/JavajackClient/src/RemotePlayer.java" binary="false"/>  
+  </dependency>  
+  <realization>    
+    <source project="JavajackClient" name="ServerProxy" file="/JavajackClient/src/ServerProxy.java" binary="false"/>    
+    <target project="JavajackShared" name="PlayerListenerInterface" 
+      file="/JavajackShared/src/PlayerListenerInterface.java" binary="false"/>  
+  </realization>  
+  <dependency>    
+    <bendpoint x="238" y="571"/>    
+    <source project="JavajackClient" name="GameBrowser" file="/JavajackClient/src/GameBrowser.java" binary="false"/>    
+    <target project="JavajackClient" name="Referee" file="/JavajackClient/src/Referee.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="31" y="571"/>    
+    <bendpoint x="31" y="710"/>    
+    <bendpoint x="31" y="865"/>    
+    <bendpoint x="31" y="1180"/>    
+    <source project="JavajackClient" name="GameBrowser" file="/JavajackClient/src/GameBrowser.java" binary="false"/>    
+    <target project="JavajackShared" name="ServerModelListenerInterface" 
+      file="/JavajackShared/src/ServerModelListenerInterface.java" binary="false"/>  
+  </dependency>  
+  <association>    
+    <bendpoint x="585" y="336"/>    
+    <bendpoint x="585" y="571"/>    
+    <bendpoint x="585" y="710"/>    
+    <bendpoint x="585" y="865"/>    
+    <bendpoint x="585" y="1180"/>    
+    <source project="JavajackClient" name="GameBrowserGUI" file="/JavajackClient/src/GameBrowserGUI.java" binary="false" 
+      navigable="false">      
+      <attribute name="listeners"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="JavajackShared" name="PlayerListenerInterface" 
+      file="/JavajackShared/src/PlayerListenerInterface.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency>    
+    <bendpoint x="52" y="1180"/>    
+    <source project="JavajackClient" name="RemotePlayer" file="/JavajackClient/src/RemotePlayer.java" binary="false"/>    
+    <target project="JavajackShared" name="ServerModelListenerInterface" 
+      file="/JavajackShared/src/ServerModelListenerInterface.java" binary="false"/>  
+  </dependency>  
+  <association>    
+    <source project="JavajackClient" name="ServerProxy" file="/JavajackClient/src/ServerProxy.java" binary="false" 
+      navigable="false">      
+      <attribute name="listener"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="JavajackShared" name="ServerModelListenerInterface" 
+      file="/JavajackShared/src/ServerModelListenerInterface.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="JavajackClient" name="RemotePlayer" file="/JavajackClient/src/RemotePlayer.java" binary="false" 
+      navigable="false">      
+      <attribute name="proxy"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="JavajackClient" name="ServerProxy" file="/JavajackClient/src/ServerProxy.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <realization>    
     <source project="JavajackClient" name="RemotePlayer" file="/JavajackClient/src/RemotePlayer.java" binary="false"/>    
     <target project="JavajackClient" name="PlayerInterface" file="/JavajackClient/src/PlayerInterface.java" 
       binary="false"/>  
   </realization>  
-  <dependency>    
-    <source project="JavajackClient" name="Javajack" file="/JavajackClient/src/Javajack.java" binary="false"/>    
-    <target project="JavajackClient" name="Referee" file="/JavajackClient/src/Referee.java" binary="false"/>  
-  </dependency>  
-  <dependency>    
-    <source project="JavajackClient" name="Referee" file="/JavajackClient/src/Referee.java" binary="false"/>    
-    <target project="JavajackClient" name="RemotePlayer" file="/JavajackClient/src/RemotePlayer.java" binary="false"/>  
-  </dependency>  
-  <dependency>    
-    <source project="JavajackClient" name="GameBrowser" file="/JavajackClient/src/GameBrowser.java" binary="false"/>    
-    <target project="JavajackClient" name="Javajack" file="/JavajackClient/src/Javajack.java" binary="false"/>  
-  </dependency>  
-  <dependency>    
-    <bendpoint x="373" y="587"/>    
-    <source project="JavajackClient" name="GameBrowser" file="/JavajackClient/src/GameBrowser.java" binary="false"/>    
-    <target project="JavajackClient" name="Referee" file="/JavajackClient/src/Referee.java" binary="false"/>  
-  </dependency>  
+  <nesting>    
+    <source project="JavajackClient" name="ServerProxy" file="/JavajackClient/src/ServerProxy.java" binary="false"/>    
+    <target project="JavajackClient" name="ServerProxy.Reader" file="/JavajackClient/src/ServerProxy.java" 
+      binary="false"/>  
+  </nesting>  
+  <association>    
+    <bendpoint x="292" y="571"/>    
+    <bendpoint x="292" y="710"/>    
+    <bendpoint x="292" y="865"/>    
+    <source project="JavajackClient" name="GameBrowser" file="/JavajackClient/src/GameBrowser.java" binary="false" 
+      navigable="false">      
+      <attribute name="proxy"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="JavajackClient" name="ServerProxy" file="/JavajackClient/src/ServerProxy.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association>    
     <source project="JavajackClient" name="GameBrowser" file="/JavajackClient/src/GameBrowser.java" binary="false" 
       navigable="false">      
@@ -160,30 +236,15 @@
       navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association>    
-    <bendpoint x="239" y="881"/>    
-    <source project="JavajackClient" name="Referee" file="/JavajackClient/src/Referee.java" binary="false" 
-      navigable="false">      
-      <attribute name="players"/>      
-      <multiplicity minimum="0" maximum="2147483647"/>    
-    </source>    
+  <dependency>    
+    <source project="JavajackClient" name="Javajack" file="/JavajackClient/src/Javajack.java" binary="false"/>    
+    <target project="JavajackClient" name="Referee" file="/JavajackClient/src/Referee.java" binary="false"/>  
+  </dependency>  
+  <realization>    
+    <source project="JavajackClient" name="LocalPlayer" file="/JavajackClient/src/LocalPlayer.java" binary="false"/>    
     <target project="JavajackClient" name="PlayerInterface" file="/JavajackClient/src/PlayerInterface.java" 
-      binary="false" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association>    
-    <bendpoint x="468" y="587"/>    
-    <bendpoint x="468" y="726"/>    
-    <bendpoint x="468" y="881"/>    
-    <source project="JavajackClient" name="GameBrowser" file="/JavajackClient/src/GameBrowser.java" binary="false" 
-      navigable="false">      
-      <attribute name="proxy"/>      
-      <multiplicity minimum="0" maximum="1"/>    
-    </source>    
-    <target project="JavajackClient" name="ServerProxy" file="/JavajackClient/src/ServerProxy.java" binary="false" 
-      navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
+      binary="false"/>  
+  </realization>  
   <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    
     <operations public="true" package="true" protected="true" private="true"/>  
